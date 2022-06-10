@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
@@ -28,7 +29,7 @@ public class LoadUsersAutoConfiguration {
     @ConditionalOnMissingBean
     public LoadUser loadUser() {
         gdpDBDriver.getJdbcTemplate().setDataSource(database());
-        return new LoadUser(gdpDBDriver.getEnv(), gdpDBDriver.getJdbcTemplate());
+        return new LoadUser(gdpDBDriver.getJdbcTemplate());
     }
 
     @Bean

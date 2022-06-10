@@ -17,7 +17,6 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public class LoadUser {
 
-    private Environment env;
     private JdbcTemplate jdbcTemplate;
 
     private final Logger logger = Logger.getLogger(String.valueOf(GdpDBDriver.class));

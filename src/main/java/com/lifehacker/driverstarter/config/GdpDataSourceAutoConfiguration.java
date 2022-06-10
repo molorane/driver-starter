@@ -19,12 +19,12 @@ import javax.sql.DataSource;
 import java.sql.Driver;
 import java.util.ServiceLoader;
 
-@Configuration
 @ConditionalOnClass(Driver.class)
 @EnableConfigurationProperties(DatabaseProperties.class)
-@AllArgsConstructor
 @Conditional(MySQLDriverOnClassPathCondition.class)
 @ConditionalOnProperty(prefix = "gdp.con", name = {"url", "user", "password", "database"})
+@Configuration
+@AllArgsConstructor
 public class GdpDataSourceAutoConfiguration {
 
     private Environment env;

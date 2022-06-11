@@ -11,7 +11,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
@@ -27,24 +26,26 @@ import java.util.ServiceLoader;
 @AllArgsConstructor
 public class GdpDataSourceAutoConfiguration {
 
-    private Environment env;
+    private DatabaseProperties databaseProperties;
 
     @Bean
     @ConditionalOnMissingBean
     public DataSource dataSource() {
         Driver driver = ServiceLoader.load(Driver.class).findFirst().get();
-        String url = env.getProperty("gdp.con.url");
-        String user = env.getProperty("gdp.con.user");
-        String password = env.getProperty("gdp.con.password");
+        String url = databaseProperties.getUrl();
+        String user = databaseProperties.getUser();
+        String password = databaseProperties.getPassword();
         return new SimpleDriverDataSource(driver, url, user, password);
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public GdpDBDriver dbStarter() {
-        return new GdpDBDriver(
-                new JdbcTemplate(dataSource()),
-                env
-        );
+    public JdbcTemplate gdpTemplate(){
+        return new JdbcTemplate(dataSource());
     }
+
+//    @Bean
+//    public GdpDBDriver gdpDBDriver(){
+//        return new GdpDBDriver(gdpTemplate(), databaseProperties);
+//    }
+
 }

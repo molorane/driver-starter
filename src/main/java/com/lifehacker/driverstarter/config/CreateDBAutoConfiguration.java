@@ -1,7 +1,7 @@
 package com.lifehacker.driverstarter.config;
 
 import com.lifehacker.driverstarter.conditions.MySQLDriverOnClassPathCondition;
-import com.lifehacker.driverstarter.database.GdpDBDriver;
+import com.lifehacker.driverstarter.database.CreateDB;
 import com.lifehacker.driverstarter.properties.DatabaseProperties;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -16,22 +16,24 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Driver;
+import java.util.Optional;
 import java.util.ServiceLoader;
 
 @ConditionalOnClass(Driver.class)
-@EnableConfigurationProperties(DatabaseProperties.class)
 @Conditional(MySQLDriverOnClassPathCondition.class)
 @ConditionalOnProperty(prefix = "gdp.con", name = {"url", "user", "password", "database"})
 @Configuration
+@EnableConfigurationProperties(DatabaseProperties.class)
 @AllArgsConstructor
-public class GdpDataSourceAutoConfiguration {
+public class CreateDBAutoConfiguration {
 
     private DatabaseProperties databaseProperties;
 
     @Bean
     @ConditionalOnMissingBean
     public DataSource dataSource() {
-        Driver driver = ServiceLoader.load(Driver.class).findFirst().get();
+        Optional<Driver> serviceLoader = ServiceLoader.load(Driver.class).findFirst();
+        Driver driver = serviceLoader.get();
         String url = databaseProperties.getUrl();
         String user = databaseProperties.getUser();
         String password = databaseProperties.getPassword();
@@ -39,13 +41,12 @@ public class GdpDataSourceAutoConfiguration {
     }
 
     @Bean
-    public JdbcTemplate gdpTemplate(){
+    public JdbcTemplate gdpTemplate() {
         return new JdbcTemplate(dataSource());
     }
 
-//    @Bean
-//    public GdpDBDriver gdpDBDriver(){
-//        return new GdpDBDriver(gdpTemplate(), databaseProperties);
-//    }
-
+    @Bean
+    public CreateDB gdpDBDriver() {
+        return new CreateDB(gdpTemplate(), databaseProperties);
+    }
 }

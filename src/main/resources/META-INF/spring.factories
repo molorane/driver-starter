@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.lifehacker.driverstarter.config.DriverAppAutoConfig,\
-com.lifehacker.driverstarter.config.GdpDataSourceAutoConfiguration,\
-com.lifehacker.driverstarter.config.LoadUsersAutoConfiguration
+com.lifehacker.driverstarter.config.CreateDBAutoConfiguration,\
+com.lifehacker.driverstarter.config.CreateTablesAutoConfiguration,\
+com.lifehacker.driverstarter.config.LoadDataAutoConfiguration

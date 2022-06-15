@@ -4,17 +4,15 @@ import com.lifehacker.driverstarter.properties.DatabaseProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.logging.Logger;
 
-@Component
 @AllArgsConstructor
 @Data
-public class GdpDBDriver {
+public class CreateDB {
 
-    private final Logger logger = Logger.getLogger(String.valueOf(GdpDBDriver.class));
+    private final Logger logger = Logger.getLogger(String.valueOf(CreateDB.class));
 
     private JdbcTemplate gdpTemplate;
     private DatabaseProperties databaseProperties;

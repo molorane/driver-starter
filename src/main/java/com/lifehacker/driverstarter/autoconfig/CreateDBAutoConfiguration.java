@@ -1,4 +1,4 @@
-package com.lifehacker.driverstarter.config;
+package com.lifehacker.driverstarter.autoconfig;
 
 import com.lifehacker.driverstarter.conditions.MySQLDriverOnClassPathCondition;
 import com.lifehacker.driverstarter.database.CreateDB;

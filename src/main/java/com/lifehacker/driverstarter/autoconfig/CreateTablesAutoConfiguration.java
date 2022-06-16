@@ -1,4 +1,4 @@
-package com.lifehacker.driverstarter.config;
+package com.lifehacker.driverstarter.autoconfig;
 
 import com.lifehacker.driverstarter.database.CreateDB;
 import com.lifehacker.driverstarter.database.CreateTables;

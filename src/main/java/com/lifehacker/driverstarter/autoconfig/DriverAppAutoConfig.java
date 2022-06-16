@@ -1,4 +1,4 @@
-package com.lifehacker.driverstarter.config;
+package com.lifehacker.driverstarter.autoconfig;
 
 import com.lifehacker.driverstarter.conditions.ConditionalOnValidCondition;
 import com.lifehacker.driverstarter.properties.DriverProperties;

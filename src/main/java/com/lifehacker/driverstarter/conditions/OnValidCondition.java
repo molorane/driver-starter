@@ -9,8 +9,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 public class OnValidCondition extends SpringBootCondition {
 
-    private static final String PROPERTY_NAME = "gdp.developer.name";
-    private static final String PROPERTY_EXPERIENCE = "gdp.developer.experience";
+    private static final String PROPERTY_NAME = "javaspace.developer.name";
+    private static final String PROPERTY_EXPERIENCE = "javaspace.developer.experience";
 
     @Override
     public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {

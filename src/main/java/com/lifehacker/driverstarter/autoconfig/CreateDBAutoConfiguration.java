@@ -21,7 +21,7 @@ import java.util.ServiceLoader;
 
 @ConditionalOnClass(Driver.class)
 @Conditional(MySQLDriverOnClassPathCondition.class)
-@ConditionalOnProperty(prefix = "gdp.con", name = {"url", "user", "password", "database"})
+@ConditionalOnProperty(prefix = "javaspace.connection", name = {"url", "user", "password", "database"})
 @Configuration
 @EnableConfigurationProperties(DatabaseProperties.class)
 @AllArgsConstructor

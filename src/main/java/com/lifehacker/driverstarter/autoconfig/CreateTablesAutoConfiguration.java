@@ -20,7 +20,7 @@ import java.util.ServiceLoader;
 @AllArgsConstructor
 @ConditionalOnClass({Driver.class})
 @ConditionalOnResource(resources = "classpath:data/users.csv")
-@ConditionalOnProperty(prefix = "gdp.con", name = {"url", "user", "password", "database"})
+@ConditionalOnProperty(prefix = "javaspace.connection", name = {"url", "user", "password", "database"})
 @AutoConfigureAfter(CreateDBAutoConfiguration.class)
 @ConditionalOnBean(CreateDB.class)
 public class CreateTablesAutoConfiguration {

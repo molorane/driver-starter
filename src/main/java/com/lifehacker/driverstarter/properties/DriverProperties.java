@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties("gdp.developer")
+@ConfigurationProperties("javaspace.developer")
 public class DriverProperties {
 
     /**

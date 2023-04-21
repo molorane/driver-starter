@@ -2,7 +2,7 @@ package com.lifehacker.driverstarter.service;
 
 import lombok.AllArgsConstructor;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @AllArgsConstructor
 public class DefaultDriver implements DriverService {

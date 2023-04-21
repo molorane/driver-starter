@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties("gdp.con")
+@ConfigurationProperties("javaspace.connection")
 public class DatabaseProperties {
 
     /**

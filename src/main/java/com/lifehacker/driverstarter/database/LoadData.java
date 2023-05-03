@@ -1,6 +1,8 @@
 package com.lifehacker.driverstarter.database;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -9,7 +11,6 @@ import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 @Component
@@ -18,7 +19,7 @@ public class LoadData {
 
     private JdbcTemplate jdbcTemplate;
 
-    private final Logger logger = Logger.getLogger(String.valueOf(LoadData.class));
+    private final Logger logger = LoggerFactory.getLogger(LoadData.class);
 
     @PostConstruct
     public void init() {
@@ -32,7 +33,7 @@ public class LoadData {
             logger.info("Reading users data..");
             path = Path.of(classPathResource.getFile().toURI());
         } catch (IOException e) {
-            logger.warning(String.format("Error %s", e.getMessage()));
+            logger.debug(String.format("Error %s", e.getMessage()));
         }
 
         logger.info("Loading users..");
@@ -43,7 +44,7 @@ public class LoadData {
             });
             logger.info("Loading users complete..");
         } catch (Exception e) {
-            logger.warning(e.getMessage());
+            logger.debug(e.getMessage());
         }
     }
 }

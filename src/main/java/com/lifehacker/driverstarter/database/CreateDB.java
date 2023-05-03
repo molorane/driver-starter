@@ -3,16 +3,18 @@ package com.lifehacker.driverstarter.database;
 import com.lifehacker.driverstarter.properties.DatabaseProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import jakarta.annotation.PostConstruct;
-import java.util.logging.Logger;
 
 @AllArgsConstructor
 @Data
 public class CreateDB {
 
-    private final Logger logger = Logger.getLogger(String.valueOf(CreateDB.class));
+    private final Logger logger = LoggerFactory.getLogger(CreateDB.class);
+
 
     private JdbcTemplate gdpTemplate;
     private DatabaseProperties databaseProperties;

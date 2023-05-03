@@ -1,11 +1,12 @@
 package com.lifehacker.driverstarter.database;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
-import java.util.logging.Logger;
 
 @Component
 @AllArgsConstructor
@@ -13,7 +14,7 @@ public class CreateTables {
 
     private JdbcTemplate jdbcTemplate;
 
-    private final Logger logger = Logger.getLogger(String.valueOf(CreateTables.class));
+    private final Logger logger = LoggerFactory.getLogger(CreateTables.class);
 
     @PostConstruct
     public void init() {

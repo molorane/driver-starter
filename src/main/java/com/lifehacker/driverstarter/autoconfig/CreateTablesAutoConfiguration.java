@@ -37,11 +37,11 @@ public class CreateTablesAutoConfiguration {
 
     @Bean
     public DataSource dataSourceForDDL() {
-        Optional<Driver> serviceLoader = ServiceLoader.load(Driver.class).findFirst();
-        Driver driver = serviceLoader.get();
-        String url = databaseProperties.getUrl() + databaseProperties.getDatabase();
-        String user = databaseProperties.getUser();
-        String password = databaseProperties.getPassword();
+        final Optional<Driver> serviceLoader = ServiceLoader.load(Driver.class).findFirst();
+        final Driver driver = serviceLoader.orElseThrow(() -> new RuntimeException("Driver not found"));
+        final String url = databaseProperties.getUrl() + databaseProperties.getDatabase();
+        final String user = databaseProperties.getUser();
+        final String password = databaseProperties.getPassword();
         return new SimpleDriverDataSource(driver, url, user, password);
     }
 }

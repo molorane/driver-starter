@@ -29,7 +29,7 @@ public class DriverAppAutoConfig {
     }
 
     //@ConditionalOnJava(value = JavaVersion.NINE, range = ConditionalOnJava.Range.OLDER_THAN)
-    public class RecommendedJava {
+    public static class RecommendedJava {
 
         private static final Logger logger = Logger.getLogger(String.valueOf(RecommendedJava.class));
 

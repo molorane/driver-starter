@@ -32,11 +32,11 @@ public class CreateDBAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public DataSource dataSource() {
-        Optional<Driver> serviceLoader = ServiceLoader.load(Driver.class).findFirst();
-        Driver driver = serviceLoader.get();
-        String url = databaseProperties.getUrl();
-        String user = databaseProperties.getUser();
-        String password = databaseProperties.getPassword();
+        final Optional<Driver> serviceLoader = ServiceLoader.load(Driver.class).findFirst();
+        final Driver driver = serviceLoader.orElseThrow(() -> new RuntimeException("Driver not found"));
+        final String url = databaseProperties.getUrl();
+        final String user = databaseProperties.getUser();
+        final String password = databaseProperties.getPassword();
         return new SimpleDriverDataSource(driver, url, user, password);
     }
 
